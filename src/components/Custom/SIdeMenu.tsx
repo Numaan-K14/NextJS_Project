@@ -1,4 +1,4 @@
-
+"use client";
 import {
   Sidebar,
   SidebarContent,
@@ -19,16 +19,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-
 interface SideMenuProps {
-    sidemenuIcon1: string;
-    sidemenuName1: string;
+  sidemenuIcon1: string;
+  sidemenuName1: string;
 }
 
 export function SideMenu({ sidemenuIcon1, sidemenuName1 }: SideMenuProps) {
-const  pathname  = usePathname();
-const isOverview = pathname === "/Landing";
-
+  const pathname = usePathname();
+  const isOverview = pathname === "/Landing";
 
   const user = JSON.parse(localStorage.getItem("user") || "null");
 
@@ -41,10 +39,11 @@ const isOverview = pathname === "/Landing";
           className={`flex items-center ${open ? "pt-6 pb-11 px-3" : "py-6"}`}
         >
           <Image
-          fill
             src="/icons/Heading.png"
             alt="Sidebar logo"
-            className={`transition-all duration-300 ${
+            width={240}
+            height={80}
+            className={`transition-all duration-300 object-contain ${
               open ? "h-20 w-60" : "h-3 w-full"
             }`}
           />
@@ -56,8 +55,9 @@ const isOverview = pathname === "/Landing";
         >
           <div className={open ? "flex items-center gap-4 " : ""}>
             <Image
-            fill
-              src="images/Avatar.jpg"
+              width={52}
+              height={52}
+              src="/images/Avatar.jpg"
               alt="User Avatar"
               className={`rounded-full transition-all duration-300 ${
                 open ? "h-13 w-13" : "h-10 w-10 "
@@ -98,10 +98,10 @@ const isOverview = pathname === "/Landing";
                   >
                     <Link href="/Landing">
                       <Image
-                      fill
-                        src={`/icons/${sidemenuIcon1}`}
+                        height={24}
+                        width={24}
+                        src="/Overview.png"
                         alt={sidemenuName1}
-                        className={"h-6 w-6"}
                       />
                       {open && (
                         <span className="font-medium text-base leading-6 text-white">
@@ -128,5 +128,3 @@ const isOverview = pathname === "/Landing";
     </SidebarProvider>
   );
 }
-
-

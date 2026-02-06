@@ -101,7 +101,7 @@ export function useCompetencyHandlers({
 
     setTimeout(() => {
       toast.success("Logged out successfully");
-      router.push("/login");
+      router.push("/");
     }, 1000);
   };
 

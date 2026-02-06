@@ -35,7 +35,7 @@ export interface CustomHeadingProps {
   description: string;
   button?: string;
   timer?: boolean;
-  className: string;
+  className?: string;
 };
 
 export interface CustomTextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {

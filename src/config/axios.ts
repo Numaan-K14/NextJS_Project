@@ -1,13 +1,11 @@
+"use client";
 import OgAxios from "axios";
 import { queryClient } from "./query-Client";
 
-
-
-const token = JSON.parse(localStorage.getItem("token") || "null");
+const token = localStorage.getItem("token") || null;
 export const axios = OgAxios.create({
-  baseURL: process.env.VITE_API_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
-
 axios.interceptors.request.use(function (req) {
   req.headers["Authorization"] = `Bearer ${token}`;
 
