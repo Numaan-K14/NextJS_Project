@@ -3,8 +3,7 @@ import { LoginApi } from "@/api/auth/LoginApi";
 import type { LoginFormValues } from "@/interfaces/Userinterfaces";
 import { Eye, EyeOff, Loader } from "lucide-react";
 import Image from "next/image";
-import { redirect } from "next/navigation";
-
+import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
@@ -12,7 +11,7 @@ import { toast } from "sonner";
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [pending, setPending] = useState(false);
-
+  // const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -34,10 +33,10 @@ export default function LoginPage() {
       localStorage.setItem("user", JSON.stringify(res?.data?.user));
       setPending(false);
       toast.success("Login successfully");
-      redirect("/Landing");
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 1000);
+     redirect("/Landing");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } catch (error) {
       setPending(false);
       console.log("Error>>>>>:", error);

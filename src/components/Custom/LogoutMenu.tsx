@@ -14,9 +14,10 @@ export function LogoutMenu() {
   const router = useRouter();
 
   const LogoutHandle = (): void => {
-    localStorage.clear();
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     toast.success("Logged out successfully");
-    router.push("/");
+    router.push("/Login");
     // router.refresh();
   };
 

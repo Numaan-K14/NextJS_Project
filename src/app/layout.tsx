@@ -3,7 +3,7 @@ import "./globals.css";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { queryClient } from "@/config/query-Client";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { SideMenu } from "@/components/Custom/SIdeMenu";
 import { Toaster } from "sonner";
 
@@ -15,13 +15,14 @@ export default function RootLayout({
   const [client] = useState(() => queryClient);
   const token = JSON.parse(localStorage.getItem("token") || "null");
   const router = useRouter();
+
   useEffect(() => {
     if (token) {
       router.push("/Landing");
     } else {
-      router.push("/");
+      redirect("/Login");
     }
-  });
+  }, [router, token]);
   return (
     <html lang="en">
       <body>

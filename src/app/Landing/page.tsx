@@ -50,11 +50,8 @@ export default function Landing() {
     questionnaire_id: number;
   }
 
-interface Error {
-  message: string;
-}
 
-  const { data: Competency } = useQuery<ApiResponse<Competency>, Error, >({
+  const { data: Competency } = useQuery<ApiResponse<Competency>, Error>({
     queryKey: [
       `/competency/participant-dashboard/${user?.participant_id}/${user?.client_id}`,
     ],
